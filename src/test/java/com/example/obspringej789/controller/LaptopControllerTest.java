@@ -69,7 +69,7 @@ class LaptopControllerTest {
                 """;
 
         HttpEntity<String> request = new HttpEntity<>(json,headers);
-        ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/books", HttpMethod.POST, request, Laptop.class);
+        ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/laptops", HttpMethod.POST, request, Laptop.class);
 
         Laptop result = response.getBody();
         assertEquals(1L, result.getId());
