@@ -44,36 +44,36 @@ class LaptopControllerTest {
         System.out.println(laptop.size());
     }
 
-    @Test
-    void findOneById() {
-        ResponseEntity<Laptop> response = testRestTemplate.getForEntity("/api/laptops/1", Laptop.class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-    }
-
-    @Test
-    void create() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-
-        String json = """
-                {
-                        "brand": "Packard Bell",
-                        "model": "58465",
-                        "ram": 32,
-                        "screenSize": 15.6,
-                        "releaseDate": "2021-01-01",
-                        "tactile": true
-                    }
-                """;
-
-        HttpEntity<String> request = new HttpEntity<>(json,headers);
-        ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/laptops", HttpMethod.POST, request, Laptop.class);
-
-        Laptop result = response.getBody();
-        assertEquals(1L, result.getId());
-        assertEquals("Packard Bell", result.getBrand());
-    }
+//    @Test
+//    void findOneById() {
+//        ResponseEntity<Laptop> response = testRestTemplate.getForEntity("/api/laptops/1", Laptop.class);
+//
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//    }
+//
+//    @Test
+//    void create() {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//
+//        String json = """
+//                {
+//                        "brand": "Packard Bell",
+//                        "model": "58465",
+//                        "ram": 32,
+//                        "screenSize": 15.6,
+//                        "releaseDate": "2021-01-01",
+//                        "tactile": true
+//                    }
+//                """;
+//
+//        HttpEntity<String> request = new HttpEntity<>(json,headers);
+//        ResponseEntity<Laptop> response = testRestTemplate.exchange("/api/laptops", HttpMethod.POST, request, Laptop.class);
+//
+//        Laptop result = response.getBody();
+//        assertEquals(1L, result.getId());
+//        assertEquals("Packard Bell", result.getBrand());
+//    }
 
 }
